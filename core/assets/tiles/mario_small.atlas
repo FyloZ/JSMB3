@@ -1,0 +1,152 @@
+mario_small.png
+size: 313, 16
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: false
+front1
+  rotate: false
+  xy: 0, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+front2
+  rotate: false
+  xy: 14, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+walking1
+  rotate: false
+  xy: 28, 0
+  size: 12, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+walking2
+  rotate: false
+  xy: 40, 0
+  size: 15, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+uturn
+  rotate: false
+  xy: 55, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+jumping
+  rotate: false
+  xy: 69, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+running1
+  rotate: false
+  xy: 85, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+running2
+  rotate: false
+  xy: 101, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+flying
+  rotate: false
+  xy: 117, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+idk
+  rotate: false
+  xy: 132, 0
+  size: 15, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+dead1
+  rotate: false
+  xy: 147, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+dead2
+  rotate: false
+  xy: 163, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+holding1
+  rotate: false
+  xy: 179, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+holding2
+  rotate: false
+  xy: 193, 0
+  size: 15, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+kicking
+  rotate: false
+  xy: 208, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+swimming1
+  rotate: false
+  xy: 224, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+swimming2
+  rotate: false
+  xy: 240, 0
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+swimming3
+  rotate: false
+  xy: 256, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+swimming4
+  rotate: false
+  xy: 270, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+back1
+  rotate: false
+  xy: 284, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+back2
+  rotate: false
+  xy: 298, 0
+  size: 14, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
