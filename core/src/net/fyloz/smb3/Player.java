@@ -142,7 +142,21 @@ public class Player {
     }
 
     private void jump() {
-        body.applyLinearImpulse(new Vector2(0, 850), body.getWorldCenter(), true);
-        isJumping = true;
+        if (!isJumping) {
+            body.applyLinearImpulse(new Vector2(0, 850), body.getWorldCenter(), true);
+            isJumping = true;
+        }
+    }
+
+    public Body getBody() {
+        return body;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
     }
 }

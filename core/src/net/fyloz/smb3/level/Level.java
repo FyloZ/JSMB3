@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import net.fyloz.smb3.Resources;
+import net.fyloz.smb3.level.map.levelparts.Blocks;
 import net.fyloz.smb3.level.map.levelparts.Floor;
 import net.fyloz.smb3.physic.CollisionManager;
 
@@ -23,8 +24,11 @@ public class Level {
     private Music music;
 
     private World world;
+    private LevelType type;
 
-    public Level(String filename) {
+    public Level(String filename, LevelType type) {
+        this.type = type;
+
         LevelLoader loader = new LevelLoader(filename);
         map = loader.getMap();
 
@@ -37,6 +41,7 @@ public class Level {
         debug = new Box2DDebugRenderer();
 
         new Floor(this);
+        new Blocks(this);
     }
 
     public void update() {
@@ -54,6 +59,14 @@ public class Level {
 
         if (debugging)
             debug.render(world, Resources.dynamicCamera.combined);
+    }
+
+    public LevelType getType() {
+        return type;
+    }
+
+    public void setType(LevelType type) {
+        this.type = type;
     }
 
     public TiledMap getMap() {

@@ -32,7 +32,6 @@ public class Floor {
                 if (cell != null) {
                     Vector2 pos = new Vector2(x, y);
                     Tile tile = new Tile(tileLayer, pos);
-                    //System.out.println(x + "/" + y + " -> " + tile.getProperties().getProperties().get(TilePropertyType.COLLISION));
 
                     createBody(tile);
 
@@ -47,13 +46,15 @@ public class Floor {
         String collision = tile.getProperties().getProperties().get(TilePropertyType.COLLISION);
         String collide = tile.getProperties().getProperties().get(TilePropertyType.COLLIDE);
 
-        if(collision != null && collision.equals("solid") && collide != null){
+        if (collision != null && collision.equals("solid") && collide != null) {
             Body body;
             BodyDef bd = new BodyDef();
             Fixture fixture;
             FixtureDef fd = new FixtureDef();
             EdgeShape shape = new EdgeShape();
             Vector2 pos = tile.getPosition();
+
+            tile.getProperties().addCustomProperty("ground", "ALL");
 
             float[] vertices = addVertex(collide);
 
@@ -66,7 +67,7 @@ public class Floor {
 
             body = level.getWorld().createBody(bd);
             fixture = body.createFixture(fd);
-            fixture.setUserData("Floor");
+            fixture.setUserData(tile.getProperties());
         }
     }
 

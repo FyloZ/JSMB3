@@ -10,7 +10,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector3;
 import net.fyloz.smb3.level.Level;
+import net.fyloz.smb3.level.LevelType;
 
 public class Main extends Game {
 
@@ -47,14 +49,14 @@ public class Main extends Game {
         init();
         load();
 
-        level = new Level("1/1");
+        level = new Level("1/1", LevelType.OVERWORLD);
         player = new Player(level);
     }
 
     public void update() {
-        if(Gdx.input.isKeyPressed(Input.Keys.I))
+        if (Gdx.input.isKeyPressed(Input.Keys.I))
             Resources.dynamicCamera.zoom += 0.05f;
-        if(Gdx.input.isKeyPressed(Input.Keys.O))
+        if (Gdx.input.isKeyPressed(Input.Keys.O))
             Resources.dynamicCamera.zoom -= 0.05f;
 
         Resources.dynamicCamera.update();
@@ -65,7 +67,9 @@ public class Main extends Game {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(0, 232, 216, 0);
+        Vector3 bgColor = level.getType().getColor();
+
+        Gdx.gl.glClearColor(bgColor.x, bgColor.y, bgColor.z, 255);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         update();

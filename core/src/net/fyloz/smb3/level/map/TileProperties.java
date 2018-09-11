@@ -12,18 +12,15 @@ public class TileProperties {
 
     private TileLayer layer;
     private Map<TilePropertyType, String> properties;
+    private Map<String, Object> customProperties;
 
     private boolean isAir = false;
 
     public TileProperties(TiledMapTileLayer.Cell cell, TileLayer layer) {
         this.layer = layer;
 
-        /**if(cell == null){
-            isAir = true;
-            return;
-        }**/
-
         properties = new HashMap<>();
+        customProperties = new HashMap<>();
 
         TiledMapTile tile = cell.getTile();
         MapProperties tileProperties = tile.getProperties();
@@ -43,6 +40,14 @@ public class TileProperties {
 
     public Map<TilePropertyType, String> getProperties() {
         return properties;
+    }
+
+    public void addCustomProperty(String name, Object value){
+        customProperties.put(name, value);
+    }
+
+    public Object getCustomProperty(String name){
+        return customProperties.get(name);
     }
 
     public boolean isAir() {
