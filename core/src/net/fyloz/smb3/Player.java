@@ -5,7 +5,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import net.fyloz.smb3.AnimationKeys.PlayerAnimations;
@@ -13,7 +12,7 @@ import net.fyloz.smb3.level.Level;
 
 import java.util.HashMap;
 
-public class Player implements ICollider {
+public class Player {
 
     private Level level;
 
@@ -39,6 +38,9 @@ public class Player implements ICollider {
     private int x = 1;
     private int y = 2;
 
+    public boolean isJumping = false;
+    private float maxSpeed = 6f;
+
     public Player(Level level) {
         this.level = level;
 
@@ -46,6 +48,7 @@ public class Player implements ICollider {
         maxKeyframes = new HashMap<>();
         maxKeyframes.put(PlayerAnimations.WALKING1, 1); // Idle
         maxKeyframes.put(PlayerAnimations.WALKING, 2);
+        maxKeyframes.put(PlayerAnimations.JUMPING1, 1);
 
         frame = atlas.findRegion(state.toString().toLowerCase());
 
@@ -61,14 +64,17 @@ public class Player implements ICollider {
         bd.position.set(x, y);
 
         body = level.getWorld().createBody(bd);
+        body.setFixedRotation(true);
         Shape shape = new PolygonShape();
         ((PolygonShape) shape).setAsBox(width / 2, height / 2);
 
         FixtureDef fd = new FixtureDef();
         fd.shape = shape;
         fd.density = 70f;
+        fd.friction = 0.15f;
 
-        body.createFixture(fd);
+        Fixture fixture = body.createFixture(fd);
+        fixture.setUserData(this);
 
         shape.dispose();
     }
@@ -83,10 +89,17 @@ public class Player implements ICollider {
         } else {
             state = PlayerAnimations.WALKING1;
         }
+
+        if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+            jump();
+        }
     }
 
     public void update() {
         input();
+
+        if (isJumping)
+            state = PlayerAnimations.JUMPING1;
 
         // TIMER
         timer++;
@@ -105,42 +118,31 @@ public class Player implements ICollider {
                 keyframe++;
         }
 
-        width = frame.getRegionWidth() / Resources.PPM;
-        height = frame.getRegionHeight() / Resources.PPM;
-
         // Camera
         OrthographicCamera camera = Resources.dynamicCamera;
 
-        System.out.println(body.getPosition().x - Gdx.graphics.getWidth() / Resources.PPM / 2);
-
-        if (body.getPosition().x - Gdx.graphics.getWidth() / Resources.PPM / 4 > 0) {
+        if (body.getPosition().x - width - camera.viewportWidth / Resources.PPM / 6 > 0) {
             camera.position.set(body.getPosition().x, camera.position.y, 0);
         }
     }
 
     public void render() {
         Resources.batch.setProjectionMatrix(Resources.dynamicCamera.combined);
-        Resources.batch.draw(frame, body.getPosition().x / Resources.PPM, body.getPosition().y / Resources.PPM, width * direction, height);
+        Resources.batch.draw(frame, body.getPosition().x - width / 2 + (direction < 0 ? 0.75f : 0), body.getPosition().y - height / 2, (float) frame.getRegionWidth() / Resources.PPM * direction, (float) frame.getRegionHeight() / Resources.PPM);
     }
 
-    public void move(int dx, int dy) {
+    private void move(int dx, int dy) {
         direction = dx < 0 ? -1 : 1;
 
-        if (body.getPosition().x + dx < Gdx.graphics.getWidth() / Resources.PPM && body.getPosition().x + dx > 0 && body.getPosition().y + dy < Gdx.graphics.getHeight() / Resources.PPM && body.getPosition().y + dy > 0) {
+        float cameraPosX = Resources.dynamicCamera.position.x;
+        if (body.getPosition().x + dx < cameraPosX + (Gdx.graphics.getWidth() / Resources.PPM) / 2 && body.getPosition().x + dx > 0 && (body.getLinearVelocity().x <= maxSpeed
+                && body.getLinearVelocity().x >= -maxSpeed)) {
             body.applyLinearImpulse(new Vector2(dx * Resources.PPM, dy * Resources.PPM), body.getWorldCenter(), true);
         }
     }
 
-    public void jump(){
-        body.applyLinearImpulse(new Vector2(0, 100), body.getWorldCenter(), true);
-    }
-
-    @Override
-    public Body getBody() {
-        return body;
-    }
-
-    @Override
-    public void onMove(int dx, int dy, TiledMapTileLayer.Cell cell) {
+    private void jump() {
+        body.applyLinearImpulse(new Vector2(0, 850), body.getWorldCenter(), true);
+        isJumping = true;
     }
 }

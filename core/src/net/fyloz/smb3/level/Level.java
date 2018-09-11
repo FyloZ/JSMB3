@@ -9,7 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import net.fyloz.smb3.Resources;
-import net.fyloz.smb3.level.levelparts.Floor;
+import net.fyloz.smb3.level.map.levelparts.Floor;
+import net.fyloz.smb3.physic.CollisionManager;
 
 public class Level {
 
@@ -31,7 +32,8 @@ public class Level {
         music = Resources.assets.get("musics/overworld.mp3");
         music.play();
 
-        world = new World(new Vector2(0, -9.8f), true);
+        world = new World(new Vector2(0, -30f), true);
+        world.setContactListener(new CollisionManager());
         debug = new Box2DDebugRenderer();
 
         new Floor(this);
@@ -40,7 +42,7 @@ public class Level {
     public void update() {
         world.step(Gdx.graphics.getDeltaTime(), 6, 2);
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.D))
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Q))
             debugging = !debugging;
     }
 
@@ -50,8 +52,8 @@ public class Level {
         renderer.setView(Resources.dynamicCamera);
         renderer.render();
 
-        //if(debugging)
-        debug.render(world, Resources.dynamicCamera.combined);
+        if (debugging)
+            debug.render(world, Resources.dynamicCamera.combined);
     }
 
     public TiledMap getMap() {
@@ -67,4 +69,5 @@ public class Level {
         renderer.dispose();
         music.pause();
     }
+
 }

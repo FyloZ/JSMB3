@@ -26,7 +26,7 @@ public class Main extends Game {
 
         Resources.dynamicCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Resources.dynamicCamera.position.set(Gdx.graphics.getWidth() / 4f, Gdx.graphics.getHeight() / 4f, 0);
-        Resources.dynamicCamera.zoom = 0.5f / Resources.PPM;
+        Resources.dynamicCamera.zoom = 0.35f / Resources.PPM;
         Resources.dynamicCamera.update();
         Resources.staticCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Resources.staticCamera.position.set(Resources.staticCamera.viewportWidth / 2f, Resources.staticCamera.viewportHeight / 2f, 0);

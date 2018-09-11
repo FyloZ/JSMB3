@@ -72,7 +72,7 @@
  </tile>
  <tile id="70">
   <properties>
-   <property name="actionnable" type="bool" value="true"/>
+   <property name="actionable" type="bool" value="true"/>
    <property name="collision" value="solid"/>
    <property name="type" value="question block"/>
   </properties>
@@ -538,6 +538,7 @@
  </tile>
  <tile id="683">
   <properties>
+   <property name="collide" value="left top"/>
    <property name="collision" value="solid"/>
   </properties>
   <objectgroup draworder="index">
@@ -548,6 +549,7 @@
  </tile>
  <tile id="684">
   <properties>
+   <property name="collide" value="top"/>
    <property name="collision" value="solid"/>
   </properties>
   <objectgroup draworder="index">
@@ -558,6 +560,7 @@
  </tile>
  <tile id="685">
   <properties>
+   <property name="collide" value="right top"/>
    <property name="collision" value="solid"/>
   </properties>
   <objectgroup draworder="index">
@@ -632,6 +635,7 @@
  </tile>
  <tile id="756">
   <properties>
+   <property name="collide" value="left"/>
    <property name="collision" value="solid"/>
   </properties>
   <objectgroup draworder="index">
@@ -640,13 +644,9 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="757">
-  <properties>
-   <property name="collision" value="solid"/>
-  </properties>
- </tile>
  <tile id="758">
   <properties>
+   <property name="collide" value="right"/>
    <property name="collision" value="solid"/>
   </properties>
   <objectgroup draworder="index">
