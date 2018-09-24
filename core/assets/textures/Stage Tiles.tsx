@@ -11,6 +11,11 @@
    <property name="collision" value="solid"/>
   </properties>
  </tile>
+ <tile id="59">
+  <properties>
+   <property name="collision" value="solid"/>
+  </properties>
+ </tile>
  <tile id="61">
   <properties>
    <property name="breakable" type="bool" value="true"/>
@@ -37,7 +42,7 @@
  </tile>
  <tile id="64">
   <properties>
-   <property name="breakable" type="bool" value="true"/>
+   <property name="actionable" type="bool" value="true"/>
    <property name="collision" value="solid"/>
    <property name="solidity" type="int" value="1"/>
    <property name="type" value="brick"/>
@@ -97,6 +102,11 @@
    <property name="collision" value="solid"/>
   </properties>
  </tile>
+ <tile id="132">
+  <properties>
+   <property name="collision" value="solid"/>
+  </properties>
+ </tile>
  <tile id="146">
   <properties>
    <property name="collision" value="solid"/>
@@ -147,6 +157,11 @@
    <property name="collision" value="solid"/>
   </properties>
  </tile>
+ <tile id="205">
+  <properties>
+   <property name="collision" value="solid"/>
+  </properties>
+ </tile>
  <tile id="219">
   <properties>
    <property name="collision" value="solid"/>
@@ -193,6 +208,11 @@
   </properties>
  </tile>
  <tile id="226">
+  <properties>
+   <property name="collision" value="solid"/>
+  </properties>
+ </tile>
+ <tile id="278">
   <properties>
    <property name="collision" value="solid"/>
   </properties>
@@ -268,6 +288,20 @@
    <frame tileid="350" duration="100"/>
    <frame tileid="351" duration="100"/>
    <frame tileid="352" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="361">
+  <properties>
+   <property name="actionable" type="bool" value="true"/>
+   <property name="collision" value="solid"/>
+   <property name="type" value="p-switch"/>
+  </properties>
+ </tile>
+ <tile id="364">
+  <animation>
+   <frame tileid="362" duration="100"/>
+   <frame tileid="363" duration="100"/>
+   <frame tileid="364" duration="100"/>
   </animation>
  </tile>
  <tile id="365">
@@ -432,7 +466,6 @@
  </tile>
  <tile id="638">
   <properties>
-   <property name="collide" value="left top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -443,7 +476,6 @@
  </tile>
  <tile id="639">
   <properties>
-   <property name="collide" value="top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -454,7 +486,6 @@
  </tile>
  <tile id="640">
   <properties>
-   <property name="collide" value="right top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -465,7 +496,6 @@
  </tile>
  <tile id="641">
   <properties>
-   <property name="collide" value="left top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -476,7 +506,6 @@
  </tile>
  <tile id="642">
   <properties>
-   <property name="collide" value="top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -487,7 +516,6 @@
  </tile>
  <tile id="643">
   <properties>
-   <property name="collide" value="right top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -569,30 +597,6 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="711">
-  <properties>
-   <property name="collide" value="left"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="713">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="714">
-  <properties>
-   <property name="collide" value="left"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="716">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
  <tile id="730">
   <properties>
    <property name="collision" value="solid"/>
@@ -654,42 +658,6 @@
     <polyline points="0,0 0,16"/>
    </object>
   </objectgroup>
- </tile>
- <tile id="784">
-  <properties>
-   <property name="collide" value="left bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="785">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="786">
-  <properties>
-   <property name="collide" value="right bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="787">
-  <properties>
-   <property name="collide" value="left bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="788">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="789">
-  <properties>
-   <property name="collide" value="right bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
  </tile>
  <tile id="803">
   <properties>
@@ -778,7 +746,6 @@
  </tile>
  <tile id="857">
   <properties>
-   <property name="collide" value="left top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -789,7 +756,6 @@
  </tile>
  <tile id="858">
   <properties>
-   <property name="collide" value="top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -800,7 +766,6 @@
  </tile>
  <tile id="859">
   <properties>
-   <property name="collide" value="right top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -811,7 +776,6 @@
  </tile>
  <tile id="860">
   <properties>
-   <property name="collide" value="left top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -822,7 +786,6 @@
  </tile>
  <tile id="861">
   <properties>
-   <property name="collide" value="top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -833,7 +796,6 @@
  </tile>
  <tile id="862">
   <properties>
-   <property name="collide" value="right top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -844,7 +806,6 @@
  </tile>
  <tile id="863">
   <properties>
-   <property name="collide" value="right top"/>
    <property name="collision" value="sided"/>
   </properties>
  </tile>
@@ -918,35 +879,22 @@
    </object>
   </objectgroup>
  </tile>
- <tile id="930">
-  <properties>
-   <property name="collide" value="left"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="932">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="933">
-  <properties>
-   <property name="collide" value="left"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="935">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
  <tile id="936">
   <properties>
-   <property name="collide" value="right bottom"/>
    <property name="collision" value="sided"/>
   </properties>
+ </tile>
+ <tile id="948">
+  <animation>
+   <frame tileid="941" duration="100"/>
+   <frame tileid="942" duration="100"/>
+   <frame tileid="943" duration="100"/>
+   <frame tileid="944" duration="100"/>
+   <frame tileid="945" duration="100"/>
+   <frame tileid="946" duration="100"/>
+   <frame tileid="947" duration="100"/>
+   <frame tileid="948" duration="100"/>
+  </animation>
  </tile>
  <tile id="949">
   <properties>
@@ -1003,41 +951,17 @@
    <property name="collision" value="solid"/>
   </properties>
  </tile>
- <tile id="1003">
-  <properties>
-   <property name="collide" value="left bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1004">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1005">
-  <properties>
-   <property name="collide" value="right bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1006">
-  <properties>
-   <property name="collide" value="left bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1007">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1008">
-  <properties>
-   <property name="collide" value="right bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
+ <tile id="1021">
+  <animation>
+   <frame tileid="1014" duration="100"/>
+   <frame tileid="1015" duration="100"/>
+   <frame tileid="1016" duration="100"/>
+   <frame tileid="1017" duration="100"/>
+   <frame tileid="1018" duration="100"/>
+   <frame tileid="1019" duration="100"/>
+   <frame tileid="1020" duration="100"/>
+   <frame tileid="1021" duration="100"/>
+  </animation>
  </tile>
  <tile id="1022">
   <properties>
@@ -1081,7 +1005,6 @@
  </tile>
  <tile id="1076">
   <properties>
-   <property name="collide" value="left top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -1092,7 +1015,6 @@
  </tile>
  <tile id="1077">
   <properties>
-   <property name="collide" value="top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -1103,7 +1025,6 @@
  </tile>
  <tile id="1078">
   <properties>
-   <property name="collide" value="right top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -1114,7 +1035,6 @@
  </tile>
  <tile id="1079">
   <properties>
-   <property name="collide" value="left top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -1125,7 +1045,6 @@
  </tile>
  <tile id="1080">
   <properties>
-   <property name="collide" value="top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -1136,7 +1055,6 @@
  </tile>
  <tile id="1081">
   <properties>
-   <property name="collide" value="right top"/>
    <property name="collision" value="sided"/>
   </properties>
   <objectgroup draworder="index">
@@ -1144,6 +1062,18 @@
     <polyline points="0,0 16,0"/>
    </object>
   </objectgroup>
+ </tile>
+ <tile id="1094">
+  <animation>
+   <frame tileid="1087" duration="100"/>
+   <frame tileid="1088" duration="100"/>
+   <frame tileid="1089" duration="100"/>
+   <frame tileid="1090" duration="100"/>
+   <frame tileid="1091" duration="100"/>
+   <frame tileid="1092" duration="100"/>
+   <frame tileid="1093" duration="100"/>
+   <frame tileid="1094" duration="100"/>
+  </animation>
  </tile>
  <tile id="1095">
   <properties>
@@ -1185,30 +1115,6 @@
    <property name="collision" value="solid"/>
   </properties>
  </tile>
- <tile id="1149">
-  <properties>
-   <property name="collide" value="left"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1151">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1152">
-  <properties>
-   <property name="collide" value="left"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1154">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
  <tile id="1168">
   <properties>
    <property name="collision" value="solid"/>
@@ -1227,42 +1133,6 @@
  <tile id="1175">
   <properties>
    <property name="collision" value="solid"/>
-  </properties>
- </tile>
- <tile id="1222">
-  <properties>
-   <property name="collide" value="left bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1223">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1224">
-  <properties>
-   <property name="collide" value="right bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1225">
-  <properties>
-   <property name="collide" value="left bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1226">
-  <properties>
-   <property name="collide" value="bottom"/>
-   <property name="collision" value="sided"/>
-  </properties>
- </tile>
- <tile id="1227">
-  <properties>
-   <property name="collide" value="right bottom"/>
-   <property name="collision" value="sided"/>
   </properties>
  </tile>
  <tile id="1241">

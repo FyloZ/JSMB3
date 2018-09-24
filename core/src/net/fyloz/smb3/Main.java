@@ -36,9 +36,9 @@ public class Main extends Game {
     }
 
     public void load() {
-        Resources.assets.load("tiles/mario_small.atlas", TextureAtlas.class);
+        Resources.assets.load("textures/mario_small.atlas", TextureAtlas.class);
+        Resources.assets.load("textures/goal.atlas", TextureAtlas.class);
         Resources.assets.load("musics/overworld.mp3", Music.class);
-        Resources.assets.load("tiles/stage.png", Texture.class);
 
         while (Resources.assets.getProgress() < 1)
             Resources.assets.update();
@@ -55,9 +55,9 @@ public class Main extends Game {
 
     public void update() {
         if (Gdx.input.isKeyPressed(Input.Keys.I))
-            Resources.dynamicCamera.zoom += 0.05f;
+            Resources.dynamicCamera.zoom += 0.01f;
         if (Gdx.input.isKeyPressed(Input.Keys.O))
-            Resources.dynamicCamera.zoom -= 0.05f;
+            Resources.dynamicCamera.zoom -= 0.01f;
 
         Resources.dynamicCamera.update();
         Resources.staticCamera.update();

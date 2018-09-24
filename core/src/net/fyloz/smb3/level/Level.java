@@ -9,8 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import net.fyloz.smb3.Resources;
-import net.fyloz.smb3.level.map.levelparts.Blocks;
-import net.fyloz.smb3.level.map.levelparts.Floor;
+import net.fyloz.smb3.level.map.levelparts.*;
 import net.fyloz.smb3.physic.CollisionManager;
 
 public class Level {
@@ -25,6 +24,8 @@ public class Level {
 
     private World world;
     private LevelType type;
+
+    private Goal goal;
 
     public Level(String filename, LevelType type) {
         this.type = type;
@@ -42,6 +43,10 @@ public class Level {
 
         new Floor(this);
         new Blocks(this);
+        new Pipes(this);
+        new Plateforms(this);
+
+        goal = new Goal(this);
     }
 
     public void update() {
@@ -56,6 +61,8 @@ public class Level {
 
         renderer.setView(Resources.dynamicCamera);
         renderer.render();
+
+        goal.render();
 
         if (debugging)
             debug.render(world, Resources.dynamicCamera.combined);

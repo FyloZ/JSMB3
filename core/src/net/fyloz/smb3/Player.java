@@ -35,7 +35,7 @@ public class Player {
 
     private float width;
     private float height;
-    private int x = 1;
+    private int x = 130;
     private int y = 2;
 
     public boolean isJumping = false;
@@ -44,7 +44,7 @@ public class Player {
     public Player(Level level) {
         this.level = level;
 
-        atlas = Resources.assets.get("tiles/mario_small.atlas");
+        atlas = Resources.assets.get("textures/mario_small.atlas");
         maxKeyframes = new HashMap<>();
         maxKeyframes.put(PlayerAnimations.WALKING1, 1); // Idle
         maxKeyframes.put(PlayerAnimations.WALKING, 2);
@@ -80,10 +80,10 @@ public class Player {
     }
 
     public void input() {
-        if (Gdx.input.isKeyPressed(Keys.D)) {
+        if (Gdx.input.isKeyPressed(Keys.D) || Gdx.input.isKeyPressed(Keys.RIGHT)) {
             move(1, 0);
             state = PlayerAnimations.WALKING;
-        } else if (Gdx.input.isKeyPressed(Keys.A)) {
+        } else if (Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT)) {
             move(-1, 0);
             state = PlayerAnimations.WALKING;
         } else {
@@ -120,22 +120,21 @@ public class Player {
 
         // Camera
         OrthographicCamera camera = Resources.dynamicCamera;
-
-        if (body.getPosition().x - width - camera.viewportWidth / Resources.PPM / 6 > 0) {
+        if (body.getPosition().x - width - camera.viewportWidth / Resources.PPM / 6 > 0 && body.getPosition().x - width - camera.viewportWidth / Resources.PPM / 6 < 160.5f) {
             camera.position.set(body.getPosition().x, camera.position.y, 0);
         }
     }
 
     public void render() {
         Resources.batch.setProjectionMatrix(Resources.dynamicCamera.combined);
-        Resources.batch.draw(frame, body.getPosition().x - width / 2 + (direction < 0 ? 0.75f : 0), body.getPosition().y - height / 2, (float) frame.getRegionWidth() / Resources.PPM * direction, (float) frame.getRegionHeight() / Resources.PPM);
+        Resources.batch.draw(frame, body.getPosition().x - width / 2 + (direction < 0 ? 0.75f : 0), body.getPosition().y - height / 2 - (4 / Resources.PPM), (float) frame.getRegionWidth() / Resources.PPM * direction, (float) frame.getRegionHeight() / Resources.PPM);
     }
 
     private void move(int dx, int dy) {
         direction = dx < 0 ? -1 : 1;
 
         float cameraPosX = Resources.dynamicCamera.position.x;
-        if (body.getPosition().x + dx < cameraPosX + (Gdx.graphics.getWidth() / Resources.PPM) / 2 && body.getPosition().x + dx > 0 && (body.getLinearVelocity().x <= maxSpeed
+        if (body.getPosition().x < 175 && body.getPosition().x + dx > 0 && (body.getLinearVelocity().x <= maxSpeed
                 && body.getLinearVelocity().x >= -maxSpeed)) {
             body.applyLinearImpulse(new Vector2(dx * Resources.PPM, dy * Resources.PPM), body.getWorldCenter(), true);
         }

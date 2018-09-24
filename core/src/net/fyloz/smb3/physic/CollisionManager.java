@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import net.fyloz.smb3.Player;
 import net.fyloz.smb3.Resources;
 import net.fyloz.smb3.level.map.TileProperties;
+import net.fyloz.smb3.level.map.TilePropertyType;
 import net.fyloz.smb3.level.map.levelparts.Floor;
 
 public class CollisionManager implements ContactListener {
@@ -16,7 +17,7 @@ public class CollisionManager implements ContactListener {
         Object uda = contact.getFixtureA().getUserData();
         Object udb = contact.getFixtureB().getUserData();
 
-        if (udb instanceof Player && uda instanceof TileProperties) {
+        if (udb instanceof Player) {
             Object tmp = uda;
             uda = udb;
             udb = tmp;
@@ -40,6 +41,7 @@ public class CollisionManager implements ContactListener {
                 }
             }
         }
+
     }
 
     @Override
@@ -55,6 +57,22 @@ public class CollisionManager implements ContactListener {
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
+        Object uda = contact.getFixtureA().getUserData();
+        Object udb = contact.getFixtureB().getUserData();
 
+        if (udb instanceof Player) {
+            Object tmp = uda;
+            uda = udb;
+            udb = tmp;
+        }
+
+        if(uda instanceof Player && udb instanceof TileProperties){
+            Player player = (Player) uda;
+            TileProperties properties = (TileProperties) udb;
+
+            if(properties.getCustomProperty("plateformY") != null && player.getBody().getPosition().y - player.getHeight() / 2 <= (float) properties.getCustomProperty("plateformY")){
+                contact.setEnabled(false);
+            }
+        }
     }
 }

@@ -2,11 +2,12 @@ package net.fyloz.smb3.level.map;
 
 public enum TilePropertyType {
 
-    COLLISION("collision"),
-    COLLIDE("collide"),
     ACTIONABLE("actionable"),
+    COLLIDE("collide"),
+    COLLISION("collision"),
     COLLECTABLE("collectable"),
-    TYPE("type");
+    TYPE("type"),
+    SOLIDITY("solidity");
 
     private String type;
 

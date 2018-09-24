@@ -12,18 +12,18 @@ import net.fyloz.smb3.level.map.TilePropertyType;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Blocks implements LevelPart {
+public class Plateforms implements LevelPart {
 
     private Level level;
     private Map<Vector2, Tile> tiles;
 
-    public Blocks(Level level) {
+    public Plateforms(Level level) {
         this.level = level;
 
         tiles = new HashMap<>();
 
         TiledMap map = level.getMap();
-        TiledMapTileLayer tileLayer = (TiledMapTileLayer) map.getLayers().get(TileLayer.BLOCKS.toString());
+        TiledMapTileLayer tileLayer = (TiledMapTileLayer) map.getLayers().get(TileLayer.PLATEFORMS.toString());
 
         for (int x = 0; x < tileLayer.getWidth(); x++) {
             for (int y = 0; y < tileLayer.getHeight(); y++) {
@@ -43,25 +43,23 @@ public class Blocks implements LevelPart {
 
     @Override
     public void createBody(Tile tile) {
-
         String collision = tile.getProperties().getProperties().get(TilePropertyType.COLLISION);
 
-        if (collision != null && collision.equals("solid")) {
+        if (collision != null && collision.equals("sided")) {
             Body body;
             BodyDef bd = new BodyDef();
             Fixture fixture;
             FixtureDef fd = new FixtureDef();
-            PolygonShape shape = new PolygonShape();
+            EdgeShape shape = new EdgeShape();
             Vector2 pos = tile.getPosition();
 
-            tile.getProperties().addCustomProperty("ground", new float[]{
-                    pos.x, pos.y + 1, pos.x + 1, pos.y + 1
-            });
+            tile.getProperties().addCustomProperty("plateformY", pos.y + 1);
+            tile.getProperties().addCustomProperty("ground", "ALL");
 
-            shape.setAsBox(0.5f, 0.5f);
+            shape.set(0, 1, 1, 1);
 
             bd.type = BodyDef.BodyType.StaticBody;
-            bd.position.set(pos.x + 0.5f, pos.y + 0.5f);
+            bd.position.set(pos);
 
             fd.shape = shape;
 
@@ -72,7 +70,7 @@ public class Blocks implements LevelPart {
     }
 
     @Override
-    public Tile getTile(int x, int y){
+    public Tile getTile(int x, int y) {
         return tiles.get(new Vector2(x, y));
     }
 }

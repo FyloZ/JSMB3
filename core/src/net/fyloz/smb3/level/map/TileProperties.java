@@ -22,15 +22,17 @@ public class TileProperties {
         properties = new HashMap<>();
         customProperties = new HashMap<>();
 
-        TiledMapTile tile = cell.getTile();
-        MapProperties tileProperties = tile.getProperties();
+        if (cell != null) {
+            TiledMapTile tile = cell.getTile();
+            MapProperties tileProperties = tile.getProperties();
 
-        Iterator<String> iterator = tileProperties.getKeys();
-        while(iterator.hasNext()){
-            String property = iterator.next();
-            String value = tileProperties.get(property).toString();
+            Iterator<String> iterator = tileProperties.getKeys();
+            while (iterator.hasNext()) {
+                String property = iterator.next();
+                String value = tileProperties.get(property).toString();
 
-            properties.put(TilePropertyType.valueOf(property.toUpperCase()), value);
+                properties.put(TilePropertyType.valueOf(property.toUpperCase()), value);
+            }
         }
     }
 
@@ -42,11 +44,11 @@ public class TileProperties {
         return properties;
     }
 
-    public void addCustomProperty(String name, Object value){
+    public void addCustomProperty(String name, Object value) {
         customProperties.put(name, value);
     }
 
-    public Object getCustomProperty(String name){
+    public Object getCustomProperty(String name) {
         return customProperties.get(name);
     }
 
